@@ -9,6 +9,9 @@ public class User {
     public User(){}
 
     public User(String loginId, String halfBaked, String name){
+        if (loginId.isEmpty() || halfBaked.isEmpty() || name.isEmpty()) {
+            throw new IllegalArgumentException("아이디, 비밀번호, 이름은 모두 필수 입력 사항입니다.");
+        }
         this.loginId = loginId;
         this.halfBaked = halfBaked;
         this.name = name;
@@ -20,10 +23,6 @@ public class User {
 
     public long getId() {
         return id;
-    }
-
-    public void setLoginId(String loginId) {
-        this.loginId = loginId;
     }
 
     public String getLoginId() {
@@ -46,9 +45,4 @@ public class User {
         return name;
     }
 
-    public void setAll(String loginId, String halfBaked, String name) {
-        this.loginId = loginId;
-        this.halfBaked = halfBaked;
-        this.name = name;
-    }
 }

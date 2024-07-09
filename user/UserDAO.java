@@ -27,7 +27,7 @@ public class UserDAO { // Repository
 
     // 회원 탈퇴
     public String delete(User user) {
-        if (db.get(user.getId()).equals(user)) {
+        if (user.equals(db.get(user.getId()))) {
             db.remove(user.getId());
             return "회원탈퇴에 성공했습니다.";
         }
@@ -39,7 +39,9 @@ public class UserDAO { // Repository
     // 사용자 조회
     public User findUserByLoginId(String loginId){
         for(User user : db.values()){
-            if(user.getLoginId().equals(loginId)) return user;
+            if(user.getLoginId().equals(loginId)) {
+                return user;
+            }
         }
         return null;
     }
